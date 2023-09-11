@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body{
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: black;
+        min-height: 100vh;
+    }
+    #textContainer {
+        position: relative;
+    }
+    #change {
+        background-color: blueviolet;
+        padding: 10px;
+        transform: translateY(0);
+        opacity: 1;
+        transition: transform 0.3s ease , opacity 0.3s ease;
+        font-family: poppins;
+        font-size: 3rem;
+        color: white;
+        text-align: center;
+    }
+
+</style>
+<body>
+    <div id="textContainer">
+        <p id="change">Teks</p>
+    </div>
+    <script>
+        const texts = ['Dia Untukku','Bukan Untukmu','Dia Milikku','Bukan Milikmu','Pergilah Kamu','Jangan Kau ganggu','Biarkan Aku Mendekatinya']
+        let current = 0;
+        function changeTeks(){
+            const textElement = document.getElementById('change')
+            textElement.style.transform = 'translateY(-100%)';
+            textElement.style.opacity='0';
+            setTimeout(() => {
+                textElement.textContent = texts[current];
+                textElement.style.transform='translateY(0)';
+                textElement.style.opacity='1'
+                current=(current + 1) % texts.length;
+            }, 500 )
+        }
+        window.addEventListener("click", changeTeks);
+        changeTeks()
+    </script>
+</body>
+
+</html>
